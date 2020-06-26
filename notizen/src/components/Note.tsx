@@ -13,8 +13,7 @@ export default class Note extends React.Component<NoteProps, NoteState> {
     super(props);
     this.state = {
       EditModeOpen: false
-
-    }
+    };
   }
 
   public render() {

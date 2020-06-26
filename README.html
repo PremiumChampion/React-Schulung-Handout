@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="react-schulung">React-Schulung</h1>
+<h2 id="a-einf%C3%BChrung">A. Einführung</h2>
+<h3 id="1-erstellen-des-projekts-link">1. Erstellen des Projekts (<a href="https://create-react-app.dev/docs/adding-typescript/">Link</a>)</h3>
+<pre class="hljs"><code><div>npx create<span class="hljs-literal">-react</span><span class="hljs-literal">-app</span> {{Unser Projektname}} -<span class="hljs-literal">-template</span> typescript
+</div></code></pre>
+<h3 id="2-zurechtfinden-im-projekt">2. Zurechtfinden im Projekt</h3>
+<ul>
+<li>Was wurde erstellt?</li>
+</ul>
+<h3 id="3-erstmaliges-starten-des-projekts">3. Erstmaliges starten des Projekts</h3>
+<pre class="hljs"><code><div>npm run start
+</div></code></pre>
+<h3 id="4-allgemeine-fragen">4. Allgemeine Fragen</h3>
+<h4 id="was-ist-ein-react-komponente">Was ist ein React-Komponente?</h4>
+<ul>
+<li>Eine React-Komponente ist im Grunde nur eine Funktion, welche HTML zurückgibt.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-comment">// Hier steht natives HTML oder eine andere React-Komponente</span>
+      <span class="hljs-keyword">return</span> (
+          &lt;div className=<span class="hljs-string">"App"</span>&gt;
+              &lt;header className=<span class="hljs-string">"App-header"</span>&gt;
+                  &lt;img src={logo} className=<span class="hljs-string">"App-logo"</span> alt=<span class="hljs-string">"logo"</span> /&gt;
+                  &lt;p&gt;Edit &lt;code&gt;src/App.tsx&lt;<span class="hljs-regexp">/code&gt; and save to reload.&lt;/</span>p&gt;
+                  &lt;a className=<span class="hljs-string">"App-link"</span> href=<span class="hljs-string">"https://reactjs.org"</span> target=<span class="hljs-string">"_blank"</span> rel=<span class="hljs-string">"noopener noreferrer"</span>&gt;
+                  Learn React
+                  &lt;<span class="hljs-regexp">/a&gt;
+              &lt;/</span>header&gt;
+          &lt;<span class="hljs-regexp">/div&gt;
+      );
+  }
+
+  export default App;
+</span></div></code></pre>
+<h3 id="nutzen-von-klassen-als-react-komponente">Nutzen von Klassen als React-Komponente</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">class</span> Hello <span class="hljs-keyword">extends</span> React.Component&lt;Props, object&gt; {
+    <span class="hljs-keyword">public</span> render() {
+        <span class="hljs-keyword">const</span> { name, enthusiasmLevel = <span class="hljs-number">1</span> } = <span class="hljs-keyword">this</span>.props;
+
+        <span class="hljs-keyword">if</span> (enthusiasmLevel &lt;= <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'You could be a little more enthusiastic. :D'</span>);
+        }
+
+        <span class="hljs-keyword">return</span> (
+            &lt;div className=<span class="hljs-string">"hello"</span>&gt;
+                &lt;div className=<span class="hljs-string">"greeting"</span>&gt;
+                Hello {name + getExclamationMarks(enthusiasmLevel)}
+                &lt;<span class="hljs-regexp">/div&gt;
+            &lt;/</span>div&gt;
+        );
+    }
+}
+</div></code></pre>
+<h4 id="was-sind-props">Was sind Props?</h4>
+<ul>
+<li>
+<p>Props sind statische Informationen/Eigenschaften in einer Komponente, wie z.B. eine Refferenz zu einer Globalen Funktions-Klasse</p>
+</li>
+<li>
+<p>Props können in der Komponente während ihrem Lebenszyklus nicht verändert werden.</p>
+</li>
+</ul>
+<h4 id="was-ist-der-state">Was ist der State?</h4>
+<ul>
+<li>
+<p>State sind dynamische Informationen, welche sich während ihrem Lebenszyklus noch verändern können.</p>
+</li>
+<li>
+<p>Eine Veränderung am State sorgt dafür, dass sich die Komponente erneut rendert (nur die Teile, welche sich verändert haben).</p>
+</li>
+</ul>
+<hr>
+<h2 id="b-unser-projekt">B. Unser Projekt</h2>
+<p>Erstellen einer App, welche uns erlaubt Notizen zu speichern, bearbeiten und zu löschen.</p>
+<p>So ähnlich soll die App am besten zum Schluss aussehen:</p>
+<h3 id="1-konzeption">1. Konzeption</h3>
+<ul>
+<li>Wie soll unsere App aussehen?</li>
+<li>Wie sieht die Nutzerführung aus?</li>
+</ul>
+<h3 id="2-in-welche-teile-k%C3%B6nnen-wir-unsere-app-unterteilen">2. In welche Teile können wir unsere App unterteilen?</h3>
+<ul>
+<li>
+<p>Welche <a href="https://developer.microsoft.com/en-us/fluentui#/controls/web">Fluent-UI-Controls</a> können wir verwenden, um diese Funktion zu erzielen?</p>
+<ul>
+<li>Action Button</li>
+<li>Panel</li>
+<li>Modal</li>
+<li>Dialog</li>
+<li>TextField</li>
+<li>Icons</li>
+<li>Buttons</li>
+<li>Spinner</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-installieren-der-abh%C3%A4ngigkeiten">3. Installieren der Abhängigkeiten</h3>
+<ul>
+<li>Fluent-UI (<a href="https://www.npmjs.com/package/@fluentui/react">Link</a>)</li>
+</ul>
+<pre class="hljs"><code><div>npm install @fluentui/react -<span class="hljs-literal">-save</span>
+</div></code></pre>
+<ul>
+<li>JavaScript Cookie (<a href="https://www.npmjs.com/package/js-cookie">Link</a>)</li>
+</ul>
+<pre class="hljs"><code><div>npm i js<span class="hljs-literal">-cookie</span> @types/js<span class="hljs-literal">-cookie</span> -<span class="hljs-literal">-save</span>
+</div></code></pre>
+<ul>
+<li>Guid TypeScript (<a href="https://www.npmjs.com/package/guid-typescript">Link</a>)</li>
+</ul>
+<pre class="hljs"><code><div>npm i guid<span class="hljs-literal">-typescript</span> -<span class="hljs-literal">-save</span>
+</div></code></pre>
+<h3 id="4-wie-erstelle-ich-mir-meine-eigene-react-komponente">4. Wie erstelle ich mir meine eigene React-Komponente</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">class</span> Name_der_Komponente <span class="hljs-keyword">extends</span> React.Component&lt;Eigenschafts_Interface_der_Komponente, State_Interface_der_Komponente&gt; {
+
+    construktor(props: Eigenschafts_Interface_der_Komponente){
+        <span class="hljs-keyword">super</span>(props);
+        <span class="hljs-comment">// Weiterer Setup und erstmaliges setzen des States</span>
+    }
+
+    <span class="hljs-comment">// Rendert die Komponente</span>
+    <span class="hljs-keyword">public</span> render() {
+        <span class="hljs-keyword">return</span> (
+        &lt;div&gt;&lt;<span class="hljs-regexp">/div&gt;
+        );
+    }
+}
+</span></div></code></pre>
+<h3 id="5-wo-und-wie-wird-die-komponente-gerendert">5. Wo und Wie wird die Komponente gerendert?</h3>
+<ul>
+<li>
+<p>Die Komponente wird in der index.tsx erstmalig gerendert. (Dies kann auch eine andere TS-Datei sein.)</p>
+</li>
+<li>
+<p>Wie wird die Komponente gerendert?</p>
+<pre class="hljs"><code><div>ReactDOM.render(&lt;Name_der_Komponente /&gt;, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>));
+</div></code></pre>
+</li>
+</ul>
+<h3 id="6-nutzen-von-properties">6. Nutzen von Properties</h3>
+<p>Beim Rendern einer Komponente können verschiedene Properties/Eigenschaften angegeben werden, diese entsprechen im größten Sinne den Attributen eines HTML-Tags. Ein großer Unterschied besteht darin, dass dort z.B. auch Methoden oder andere Datentypen übergeben werden können.</p>
+<p>Es ist immer empfohlen eine strikte Typisierung einzuhalten, um unnötigen Bugs aus dem Weg zu gehen.</p>
+<p>Properties können durch <code>this.props.EIGENSCHFTSNAME</code> abgerufen werden.</p>
+<p>!! Properties können nicht in der Komponente verändert werden, sondern müssen von einer <em>Parent-Komponente</em> verändert werden.</p>
+<p>Wann sind Properties hilfreich und wann nicht?</p>
+<h3 id="7-nutzen-des-states">7. Nutzen des States</h3>
+<p>Um Daten <em>Live</em> zu ändern (z.B. bei einer Eingabe eines Users) wird häufig der sogenannte State verwendet. Dieser erlaubt es nur veränderte Teile neu zu rendern, jedoch auch nicht zu oft, damit die Performance nicht beeinträchtigt wird.</p>
+<p>Der State kann durch <code>this.state.EIGENSCHFTSNAME</code> abgerufen werden.</p>
+<p><code>this.state</code> ist eine Konstante und kann daher nicht mit <code>this.state = DEIN_NEUER_STATE;</code> verändert werden. Um den State zu verändern rufen wir die Funktion <code>this.setState({EIGENSCHFTSNAME: NEUER EIGENSCHFTSWERT});</code> auf.</p>
+<p>Dabei können wir sowohl nur eine Eigenschaft als auch mehrere Eigenschaften geichzeitig verändern.</p>
+<hr>
+<h2 id="c-events">C. Events</h2>
+<p>Die Behandlung von Ereignissen mit React-Elementen ist mit der Behandlung von Ereignissen auf DOM-Elementen vergleichbar.</p>
+<p>In HTML:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"clickEvent()"</span>&gt;</span>
+  Klick mich!!
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</div></code></pre>
+<p>In React:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{clickEvent.bind(this)}</span>&gt;</span>
+  Klick mich!!
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</div></code></pre>
+<p>Wobei <code>clickEvent</code> eine funktion in der TSX oder einer anderen Datei ist:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clickEvent</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"clicked"</span>);
+}
+</div></code></pre>
+<p>Um Änderungen am State vorehmen zu können, die Funktion mit <code>FUNKTIONSNAME.bind(this)</code> übergeben werden. Dabei werden die Übergabeparameter automatisch an die neue Funktion weitergeleitet.</p>
+<p>Folgende Funktionen erzielen die gleiche Funktion:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{(e)</span> =&gt;</span> this.deleteRow(id, e)}&gt;Delete Row<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.deleteRow.bind(this,</span> <span class="hljs-attr">id</span>)}&gt;</span>Delete Row<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</div></code></pre>
+<hr>
+<h2 id="d-usefull-tipps">D. Usefull Tipps</h2>
+<h3 id="1-%22mappen%22-von-arrays">1. <em>&quot;Mappen&quot;</em> von Arrays</h3>
+<p>Um z.B. eine Liste mit verschiedenen Items zu rendern, kann man in einer Funktion ein Array <em>mappen</em>.</p>
+<p>Wichtig danei ist, dass das Element, was zurückgegeben wird ein <strong>key-Attribut</strong> besitzt, da React ansonsten das falsche Element erneut rendert, wenn z.B. ein Element am Anfang hinzukommt. Dabei ist es auch nicht empfohlen, den Index als key zu wählen, da dieser nicht bei jedem Element eindeutig ist.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> render() {
+    <span class="hljs-keyword">let</span> items: <span class="hljs-built_in">string</span>[] = [<span class="hljs-string">"Apfel"</span>, <span class="hljs-string">"Banane"</span>, <span class="hljs-string">"Kiwi"</span>, <span class="hljs-string">"Orange"</span>];
+    <span class="hljs-keyword">return</span> (
+        &lt;ul&gt;
+            {
+                items.map(<span class="hljs-function">(<span class="hljs-params">item: <span class="hljs-built_in">string</span>, index: <span class="hljs-built_in">number</span>, array: <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">string</span>[]</span>)=&gt;</span>{
+                    <span class="hljs-keyword">return</span> (
+                        &lt;li key={SOME_UNIKE_ITEM_PROPERTY_OR_GUID}&gt;{item}&lt;<span class="hljs-regexp">/li&gt;
+                    );
+                })
+            }
+        &lt;/u</span>l&gt;
+    );
+}
+</div></code></pre>
+<p>Expected output:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Apfel<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Banane<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Kiwi<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Orange<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+<h3 id="2-konditionales-rendern-von-komponenten">2. Konditionales Rendern von Komponenten</h3>
+<p>Wenn man in einer Komponente Teile nur rendern möchte, wenn diese eine bestimmt Bedingung erfüllen, z.B. Wenn ein Textfeld nicht leer ist.</p>
+<p>Damit folgendes Element nicht gerendert wird, kann die folgende Struktur verwedet werden:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> render() {
+    <span class="hljs-keyword">return</span> (
+        &lt;div&gt;
+            {<span class="hljs-literal">true</span> &amp;&amp;
+                &lt;p&gt;Dieser Paragraph wird angezeigt&lt;<span class="hljs-regexp">/p&gt;
+            }
+            {false &amp;&amp;
+                &lt;p&gt;Dieser Paragraph wird nicht angezeigt&lt;/</span>p&gt;
+            }
+        &lt;<span class="hljs-regexp">/div&gt;
+    );
+}
+</span></div></code></pre>
+<p>Diese Bedingungen können dann auch verknüpft werden.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> render() {
+    <span class="hljs-keyword">let</span> name: <span class="hljs-built_in">string</span> = <span class="hljs-string">"Dein Name"</span>;
+    <span class="hljs-keyword">return</span> (
+        &lt;div&gt;
+            {name.length &gt; <span class="hljs-number">0</span> &amp;&amp; name.length &lt; <span class="hljs-number">10</span> &amp;&amp;
+                &lt;p&gt;Dein Name ist {name}&lt;<span class="hljs-regexp">/p&gt;
+            }
+            {name.length == 0 || name.length &gt; 10 &amp;&amp;
+                &lt;div&gt;Der Name {name} ist leer oder zu lang.&lt;/</span>div&gt;
+            }
+        &lt;<span class="hljs-regexp">/div&gt;
+    );
+}
+</span></div></code></pre>
+<h3 id="3-n%C3%BCtzliche-funktionen">3. Nützliche Funktionen</h3>
+<h4 id="componentdidmount">componentDidMount()</h4>
+<p>Um eine bestimmte Aktion auszuführen, wenn die Komponente auf der Seite platziert wurde (z.B. Daten aggregieren) kann die Methode <code>componentDidMount()</code> verwendet werden. Darin kan dann <code>this.setState({});</code> verwendet werden, um ein erneutes Rendern zu triggern und die Komponente zu verändern.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/**
+ * Called immediately after a component is mounted. Setting state here will trigger re-rendering.
+ */</span>
+componentDidMount?(): <span class="hljs-built_in">void</span>;
+</div></code></pre>
+<h4 id="shouldcomponentupdate">shouldComponentUpdate()</h4>
+<p>Um eine das erneute Rendern zu unterdrücken, z.B. um ein Focus Event beizubehallten, kann die Methode <code>shouldComponentUpdate()</code> verwendet werden diese gibt dann einen Boolean (true/false) zurück.</p>
+<ul>
+<li>true = Komponente soll erneut gerendert werden</li>
+<li>flase = Komponente soll nicht erneut gerendert werden</li>
+</ul>
+<p>Die Methode hat drei Parameter:</p>
+<ol>
+<li>nextProps</li>
+</ol>
+<ul>
+<li>Enthalten die neuen Properties / Eigenschaften.</li>
+<li>Können mit <code>this.props</code> verglichen werden.</li>
+</ul>
+<ol start="2">
+<li>nextState</li>
+</ol>
+<ul>
+<li>Der neue State, falls die Methode durch <code>this.setState({});</code> getriggert wurde.</li>
+<li>Kann mit <code>this.state</code> verglichen werden um zu entscheiden, ob die Komponente ein Update erhalten sollte.</li>
+</ul>
+<ol start="3">
+<li>nextContext</li>
+</ol>
+<ul>
+<li>Wird global verwendet um die Eigenschaften nicht durch den gesamten Komponenten Aufbau zu schleifen.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-comment">/**
+ * Called to determine whether the change in props and state should trigger a re-render.
+ *
+ * `Component` always returns true.
+ * `PureComponent` implements a shallow comparison on props and state and returns true if any
+ * props or states have changed.
+ *
+ * If false is returned, `Component#render`, `componentWillUpdate`
+ * and `componentDidUpdate` will not be called.
+ */</span>
+shouldComponentUpdate?(nextProps: Readonly&lt;P&gt;, nextState: Readonly&lt;S&gt;, nextContext: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">boolean</span>;
+</div></code></pre>
+<h4 id="componentwillunmount">componentWillUnmount()</h4>
+<p>Wird die Komponente entfernt, können hier notwendige Aufräumarbeiten angestoßen werden, z.B. ein GET/POST/PUT Request abgebrochen oder ein Timeout / Intervall gecleared.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/**
+ * Called immediately before a component is destroyed. Perform any necessary cleanup in this method, such as
+ * cancelled network requests, or cleaning up any DOM elements created in `componentDidMount`.
+ */</span>
+componentWillUnmount?(): <span class="hljs-built_in">void</span>;
+</div></code></pre>
+<h4 id="componentdidcatch">componentDidCatch()</h4>
+<p>Um einen Fehler beim Rendern abzufangen wird die Methode <code>componentDidCatch()</code> implementiert.</p>
+<p>Fehler können z.B. sein, dass eine Variable <code>undefined</code> oder <code>null</code> ist.</p>
+<p>Der Übergabeparameter <code>error: Error</code> enthält den Stack des Fehlers.</p>
+<p>Der Übergabeparameter <code>errorInfo: ErrorInfo</code> enthät eine Property Namens <code>componentStack</code>, welche erfasst, welche Komponente die Ausnahme enthielt sowie Ihren callStack.</p>
+<p>Hier könnte z.B. dem Nutzer eine Nachricht angezeigt werden, welcher Fehler aufgetreten ist, und wie dieser behoben werden könnte oder die Eigenschaften auf Fehler überprüft und die Komponente dann erneut gerendert werden.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/**
+ * Catches exceptions generated in descendant components. Unhandled exceptions will cause
+ * the entire component tree to unmount.
+ */</span>
+componentDidCatch?(error: <span class="hljs-built_in">Error</span>, errorInfo: ErrorInfo): <span class="hljs-built_in">void</span>;
+</div></code></pre>
+<hr>
+<h2 id="e-das-fertige-projekt">E. Das fertige Projekt</h2>
+<h3 id="1-aufbau">1. Aufbau</h3>
+<pre class="hljs"><code><div>│   .gitignore
+│   package-lock.json
+│   package.json
+│   README.md
+│   tsconfig.json
+│
+├───public
+│       favicon.ico
+│       index.html
+│       manifest.json
+│       robots.txt
+│
+└───src
+    │   functions.ts
+    │   index.css
+    │   index.tsx
+    │   interfaces.ts
+    │   react-app-env.d.ts
+    │   serviceWorker.ts
+    │   setupTests.ts
+    │
+    └───components
+            Note.tsx
+            Notizanzeige.tsx
+            Notizbearbeitung.tsx
+</div></code></pre>
+<p>Im <code>src</code> Ordener befindet sich unsere Lösung.</p>
+<p>In der Datei <code>functions.ts</code> befinden sich die allgemeinen Funktionen <code>getNotes()</code> und <code>saveNotes()</code>, welche uns helfen unseren notize abzurufen und zu speichern.</p>
+<p>In der Datei <code>index.tsx</code> befindet sich der Einstiegspunkt für unser Programm.</p>
+<pre class="hljs"><code><div>ReactDOM.render(
+    &lt;Notizanzeige /&gt;,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+);
+</div></code></pre>
+<p>Diese Zeile rendert unsere erste Komponente: Die Notizanzeige. Dabei wird der Inhalt des HTML-Elements, mit der Id <code>root</code>, mit dem Inhalt unserer Komponente ersetzt.</p>
+<h3 id="2-beschreiben-unserer-komponenten">2. Beschreiben unserer Komponenten</h3>
+<h4 id="notizanzeige">Notizanzeige</h4>
+<p>Unsere Komponente <code>&lt;Notizanzeige /&gt;</code> beinhaltet die Anzeige für die erstellten Notizen.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;&gt;</span>
+    {/* Button wecher dafür verwendet wird neue Notizen hinzuzufügen */}
+    <span class="hljs-tag">&lt;<span class="hljs-name">ActionButton</span> <span class="hljs-attr">iconProps</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">iconName:</span> "<span class="hljs-attr">Add</span>" }} <span class="hljs-attr">text</span>=<span class="hljs-string">{</span>"<span class="hljs-attr">Notiz</span> <span class="hljs-attr">hinzuf</span>ü<span class="hljs-attr">gen</span>"} <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.addNote.bind(this)}</span> /&gt;</span>
+    {/* Dier Lassen wir uns einen Dialog anzeigen, welcher uns eine neue Notiz hinzufügt */}
+    {this.state.newNote !== null &amp;&amp;
+        <span class="hljs-tag">&lt;<span class="hljs-name">Notizbearbeitung</span> <span class="hljs-attr">Note</span>=<span class="hljs-string">{this.state.newNote}</span> <span class="hljs-attr">onDelete</span>=<span class="hljs-string">{this.discardNewNote.bind(this)}</span> <span class="hljs-attr">onDiscard</span>=<span class="hljs-string">{this.discardNewNote.bind(this)}</span> <span class="hljs-attr">onSave</span>=<span class="hljs-string">{this.appendNote.bind(this)}</span> /&gt;</span>
+    }
+    {/* Dieser Abschnitt wird angezeigt, wenn Notizen vorhanden sind, und bestätigt wurde, dass derzeitig keine Notizen geladen wurden */}
+    {this.state.notes.length &gt; 0 &amp;&amp; !this.state.loading &amp;&amp;
+        // Hier werden alle Notizen einzeln gerendert
+        this.state.notes.map((value: iNote, index: number, array: iNote[]) =&gt; {
+        return (
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{value.guid}</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">Note</span> <span class="hljs-attr">Note</span>=<span class="hljs-string">{value}</span> <span class="hljs-attr">onSave</span>=<span class="hljs-string">{this.saveNote.bind(this,</span> <span class="hljs-attr">index</span>)} <span class="hljs-attr">onDelete</span>=<span class="hljs-string">{this.deleteNote.bind(this,</span> <span class="hljs-attr">index</span>)} /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">hr</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        );
+        })
+    }
+    {/* Dieser Abschnitt wird angezeigt, wenn keine Notizen vorhanden sind, und bestätigt wurde, dass derzeitig keine Notizen geladen wurden */}
+    {this.state.notes.length === 0 &amp;&amp; !this.state.loading &amp;&amp;
+        <span class="hljs-tag">&lt;<span class="hljs-name">MessageBar</span> <span class="hljs-attr">messageBarType</span>=<span class="hljs-string">{MessageBarType.info}</span>&gt;</span>Du hast keine Notizen<span class="hljs-tag">&lt;/<span class="hljs-name">MessageBar</span>&gt;</span>
+    }
+    {/* Dieser Abschnitt wird angezeigt, wenn derzeit keine Notizen geladen werden */}
+    {this.state.loading &amp;&amp;
+        <span class="hljs-tag">&lt;<span class="hljs-name">Spinner</span> <span class="hljs-attr">size</span>=<span class="hljs-string">{SpinnerSize.large}</span> <span class="hljs-attr">type</span>=<span class="hljs-string">{SpinnerType.large}</span> <span class="hljs-attr">label</span>=<span class="hljs-string">{</span>"<span class="hljs-attr">Lade</span> <span class="hljs-attr">Notizen</span>"}&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Spinner</span>&gt;</span>
+    }
+<span class="hljs-tag">&lt;/&gt;</span>
+</div></code></pre>
+<p>Dabei werden verschiedene Events handgehabt:</p>
+<p>1. Event beim Laden der Komponente</p>
+<p>Um die Notizen automatisch beim Laden der Komponente abzufragen wird in der Methode <code>componentDidMount()</code> die Funktion zum Abfragen der Notiz aufgerufen und der State der Komponente dementsprechend gesetzt.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> componentDidMount() {
+    NoteFunctions.getNotes()
+        .then(<span class="hljs-function">(<span class="hljs-params">value: iNote[]</span>) =&gt;</span> {
+        <span class="hljs-keyword">this</span>.setState({ notes: value, loading: <span class="hljs-literal">false</span> });
+        });
+}
+</div></code></pre>
+<p>2. Events beim Hinzufügen einer Notiz:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">private</span> addNote() {
+    <span class="hljs-keyword">this</span>.setState({ newNote: { body: <span class="hljs-string">""</span>, title: <span class="hljs-string">""</span>, guid: Guid.create().toString() } });
+}
+
+<span class="hljs-keyword">private</span> appendNote(newNote: iNote) {
+    <span class="hljs-keyword">let</span> newNotes: iNote[] = <span class="hljs-keyword">this</span>.state.notes;
+    newNotes.unshift(newNote);
+    <span class="hljs-keyword">this</span>.setState({ notes: newNotes, newNote: <span class="hljs-literal">null</span> });
+    NoteFunctions.saveNotes(newNotes);
+}
+
+<span class="hljs-keyword">private</span> discardNewNote() {
+    <span class="hljs-keyword">this</span>.setState({ newNote: <span class="hljs-literal">null</span> });
+}
+</div></code></pre>
+<p>3. Events beim Speichern oder entfernen einer Notiz:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">private</span> saveNote(index: <span class="hljs-built_in">number</span>, newNote: iNote) {
+    <span class="hljs-keyword">let</span> newNotes: iNote[] = <span class="hljs-keyword">this</span>.state.notes;
+    newNotes[index] = newNote;
+    <span class="hljs-keyword">this</span>.setState({ notes: newNotes });
+    NoteFunctions.saveNotes(newNotes);
+}
+
+<span class="hljs-keyword">private</span> deleteNote(index: <span class="hljs-built_in">number</span>) {
+    <span class="hljs-keyword">let</span> newNotes: iNote[] = <span class="hljs-keyword">this</span>.state.notes;
+    newNotes.splice(index, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">this</span>.setState({ notes: newNotes });
+    NoteFunctions.saveNotes(newNotes);
+}
+</div></code></pre>
+<h4 id="notiz">Notiz</h4>
+<p>Dise Komponente stellt eine Notiz dar und erlaubt es dem Nutzer genau diese eine zu bearbeiten.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{this.props.Note.title}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{this.props.Note.body}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ActionButton</span> <span class="hljs-attr">text</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">Bearbeiten</span>`} <span class="hljs-attr">iconProps</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">iconName:</span> "<span class="hljs-attr">Edit</span>" }} <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.toggleEditMode.bind(this)}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ActionButton</span> <span class="hljs-attr">text</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">L</span>ö<span class="hljs-attr">schen</span>`} <span class="hljs-attr">iconProps</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">iconName:</span> "<span class="hljs-attr">Delete</span>" }} <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.props.onDelete}</span> /&gt;</span>
+    {this.state.EditModeOpen &amp;&amp;
+        <span class="hljs-tag">&lt;<span class="hljs-name">Notizbearbeitung</span> <span class="hljs-attr">Note</span>=<span class="hljs-string">{this.props.Note}</span> <span class="hljs-attr">onSave</span>=<span class="hljs-string">{this.saveNote.bind(this)}</span> <span class="hljs-attr">onDelete</span>=<span class="hljs-string">{this.props.onDelete}</span> <span class="hljs-attr">onDiscard</span>=<span class="hljs-string">{this.toggleEditMode.bind(this)}</span> /&gt;</span>
+    }
+<span class="hljs-tag">&lt;/&gt;</span>
+</div></code></pre>
+<p>Der Abschnitt <code>&lt;p&gt;{this.props.Note.title}&lt;/p&gt; &lt;pre&gt;{this.props.Note.body}&lt;/pre&gt;</code> stellt den Titel sowie den Body der Notiz dar. Da der Body auch mehrere zeilen beinhlatet, wird dafür der HTML-Tag <code>&lt;pre&gt;&lt;/pre&gt;</code> verwendet, welcher leere auch <em>&quot;leere&quot;</em> Zeichen (wie Leerzeichen oder newLinkeCharakters) darstellt.</p>
+<p>Der Bearbeitungsdialog wird Konditional gerendert, damit dieser durch einen Klick auf einen Button angezeigt werden kann. Dazu wurde folgende Funktion erstellt.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">private</span> toggleEditMode() {
+    <span class="hljs-keyword">this</span>.setState({ EditModeOpen: !<span class="hljs-keyword">this</span>.state.EditModeOpen });
+}
+</div></code></pre>
+<p>Diese setzt einen State-Eigenschafts-Wert und triggert anschließend ein erneutes Rendern.</p>
+<h4 id="notizbearbeitung">Notizbearbeitung</h4>
+<p>Diese Komponente stellt unseren Bearbeitungsdialog dar, in welchem wir unseren Titel und Body bearbeiten sowie die Notiz löschen können.</p>
+<p>Die Komponente ist so aufgebaut:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Dialog</span>
+        <span class="hljs-attr">hidden</span>=<span class="hljs-string">{false}</span>
+        <span class="hljs-attr">onDismiss</span>=<span class="hljs-string">{this.saveNote.bind(this)}</span>
+        <span class="hljs-attr">dialogContentProps</span>=<span class="hljs-string">{{</span>
+            <span class="hljs-attr">type:</span> <span class="hljs-attr">DialogType.normal</span>,
+            <span class="hljs-attr">title:</span> '<span class="hljs-attr">Bearbeiten</span>',
+            <span class="hljs-attr">showCloseButton:</span> <span class="hljs-attr">true</span>,
+            <span class="hljs-attr">onDismiss:</span> <span class="hljs-attr">this.props.onDiscard.bind</span>(<span class="hljs-attr">this</span>)
+        }}
+    &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">TextField</span>
+            <span class="hljs-attr">label</span>=<span class="hljs-string">{</span>"<span class="hljs-attr">Titel</span> <span class="hljs-attr">eingeben:</span>"}
+            <span class="hljs-attr">value</span>=<span class="hljs-string">{this.state.Title}</span>
+            <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.titleChanged.bind(this)}</span>
+        /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">TextField</span>
+            <span class="hljs-attr">label</span>=<span class="hljs-string">{</span>"<span class="hljs-attr">Body</span> <span class="hljs-attr">eingeben:</span>"}
+            <span class="hljs-attr">value</span>=<span class="hljs-string">{this.state.Body}</span>
+            <span class="hljs-attr">multiline</span>
+            <span class="hljs-attr">autoAdjustHeight</span> 
+            <span class="hljs-attr">resizable</span>=<span class="hljs-string">{false}</span>
+            <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.bodyChanged.bind(this)}</span>
+        /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">DialogFooter</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">PrimaryButton</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.saveNote.bind(this)}</span> <span class="hljs-attr">text</span>=<span class="hljs-string">{</span>"<span class="hljs-attr">Speichern</span>"} /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">DefaultButton</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.props.onDelete.bind(this)}</span> <span class="hljs-attr">text</span>=<span class="hljs-string">{</span>"<span class="hljs-attr">L</span>ö<span class="hljs-attr">schen</span>"} /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">DialogFooter</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Dialog</span>&gt;</span>
+<span class="hljs-tag">&lt;/&gt;</span>
+</div></code></pre>
+<p>Hier werden im Dialog zwei Textfelder erstellt, welche den State nutzen, um ihre Werte anzuzeigen und zu ändern. Dabei wird nicht auf das <em>interne</em> Statemanagement gesetzt, sondern auf eine eigene Funktionen sesetzt, welche uns den State setzen.</p>
+<p>Diese sind wie folgt aufgebaut:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">private</span> titleChanged(event: React.FormEvent&lt;HTMLInputElement | HTMLTextAreaElement&gt;, newTitle: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">this</span>.setState({ Title: newTitle });
+}
+
+<span class="hljs-keyword">private</span> bodyChanged(event: React.FormEvent&lt;HTMLInputElement | HTMLTextAreaElement&gt;, newBody: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">this</span>.setState({ Body: newBody });
+}
+</div></code></pre>
+<p>Die Funktion <code>titleChanged()</code> setzt den <code>Title</code> Wert des States neu, wohingegen die Funktion <code>bodyChanged()</code> den <code>Body</code> Wert des States neu setzt. Beide Funktionen triggern ein erneutes rendern des jeweiligen Control, wodurch der neue Wert übernommen wird.</p>
+<p>Hier ist auch zu erkennen, dass Übergabeparameter mit dem Funktionszusatz <code>.bind(this)</code> automatisch weitere Parameter wie das Event oder den neuen Wert zugewiesen bekommen.</p>
+<p>Der Dialog erlaubt es einem, einen Footer zu erstellen, welcher am Ende des Dialogs angezeigt wird.</p>
+
+</body>
+</html>

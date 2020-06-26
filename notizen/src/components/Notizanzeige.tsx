@@ -26,11 +26,15 @@ export default class Notizanzeige extends React.Component<NotizanzeigeProps, Not
   public render() {
     return (
       <>
+        {/* Button wecher dafür verwendet wird neue Notizen hinzuzufügen */}
         <ActionButton iconProps={{ iconName: "Add" }} text={"Notiz hinzufügen"} onClick={this.addNote.bind(this)} />
+        {/* Dier Lassen wir uns einen Dialog anzeigen, welcher uns eine neue Notiz hinzufügt */}
         {this.state.newNote !== null &&
           <Notizbearbeitung Note={this.state.newNote} onDelete={this.discardNewNote.bind(this)} onDiscard={this.discardNewNote.bind(this)} onSave={this.appendNote.bind(this)} />
         }
+        {/* Dieser Abschnitt wird angezeigt, wenn Notizen vorhanden sind, und bestätigt wurde, dass derzeitig keine Notizen geladen wurden */}
         {this.state.notes.length > 0 && !this.state.loading &&
+          // Hier werden alle Notizen einzeln gerendert
           this.state.notes.map((value: iNote, index: number, array: iNote[]) => {
             return (
               <div key={value.guid}>
@@ -40,9 +44,11 @@ export default class Notizanzeige extends React.Component<NotizanzeigeProps, Not
             );
           })
         }
+        {/* Dieser Abschnitt wird angezeigt, wenn keine Notizen vorhanden sind, und bestätigt wurde, dass derzeitig keine Notizen geladen wurden */}
         {this.state.notes.length === 0 && !this.state.loading &&
           <MessageBar messageBarType={MessageBarType.info}>Du hast keine Notizen</MessageBar>
         }
+        {/* Dieser Abschnitt wird angezeigt, wenn derzeit keine Notizen geladen werden */}
         {this.state.loading &&
           <Spinner size={SpinnerSize.large} type={SpinnerType.large} label={"Lade Notizen"}></Spinner>
         }
@@ -85,7 +91,7 @@ export default class Notizanzeige extends React.Component<NotizanzeigeProps, Not
     NoteFunctions.getNotes()
       .then((value: iNote[]) => {
         this.setState({ notes: value, loading: false });
-      })
+      });
   }
 
 
