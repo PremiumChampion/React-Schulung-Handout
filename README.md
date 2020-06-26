@@ -20,7 +20,7 @@ npm run start
 
 ### 4\. Allgemeine Fragen
 
-#### Was ist ein React-Komponente?
+#### Was ist eine React-Komponente?
 
 - Eine React-Komponente ist im Grunde nur eine Funktion, welche HTML zurückgibt.
 
