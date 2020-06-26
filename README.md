@@ -83,8 +83,6 @@ class Hello extends React.Component<Props, object> {
 
 Erstellen einer App, welche uns erlaubt Notizen zu speichern, bearbeiten und zu löschen.
 
-So ähnlich soll die App am besten zum Schluss aussehen:
-
 ### 1\. Konzeption
 
 - Wie soll unsere App aussehen?
